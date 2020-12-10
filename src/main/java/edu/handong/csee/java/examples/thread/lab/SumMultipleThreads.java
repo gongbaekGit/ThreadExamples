@@ -30,6 +30,15 @@ public class SumMultipleThreads {
 			threadsForSubSum.add(thread);
 			System.out.println("Thread-" + i + " started!");
 		}
+		
+		for(int j=0; j<10; j++) {
+			Thread t = threadsForSubSum.get(j);
+			try {
+				t.join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+			}
+		}
 
 		long grandTotal = 0;
 		for(SumRunner runner:sumRunners) {
